@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import { Accordian } from "./components/accordian";
 
 function App() {
+  const [selectedId, setSelectedId] = useState(new Set([]));
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {[1, 2, 3, 4].map((item) => (
+        <Accordian
+          selectedId={selectedId}
+          setSelectedId={setSelectedId}
+          index={item}
+        />
+      ))}
     </div>
   );
 }
