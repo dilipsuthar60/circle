@@ -65,6 +65,7 @@ function App() {
 
   const isUndoDisabled = circles.length === 0;
   const isRedoDisabled = stack.length === 0;
+  const isClearDisabled = circles.length == 0 && stack.length == 0;
 
   return (
     <div className="container">
@@ -75,11 +76,7 @@ function App() {
         <button className="btn" onClick={onRedo} disabled={isRedoDisabled}>
           Redo
         </button>
-        <button
-          className="btn"
-          onClick={onClear}
-          disabled={circles.length === 0 && stack.length === 0}
-        >
+        <button className="btn" onClick={onClear} disabled={isClearDisabled}>
           Clear Circles
         </button>
       </div>
@@ -87,6 +84,8 @@ function App() {
         style={{
           position: "relative",
           background: "#f0f0f0",
+          overflow: "hidden",
+          borderRadius: "10px",
         }}
         className="circle-container"
         onClick={(event) => getCircle(event)}
